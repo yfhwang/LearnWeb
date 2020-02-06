@@ -101,7 +101,7 @@ git remote add github git@gihub.com:zjrenivan/learngit.git
 git remote add gitee git@gitee.com:zjrenivan/learngit.git
 ```
 
-用`git remote -v`查看远程库信息，可以看到两个远程库
+用`git remote -v`**查看远程库信息**，可以看到两个远程库
 
 如果要推送到GitHub，使用命令：`git push github master`
 

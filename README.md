@@ -9,12 +9,11 @@
 ## HTML
 
 - W3CSchool: [汤小洋的HTML视频教程](https://www.w3cschool.cn/minicourse/play/html_txy)
-- [HTML笔记](LearnHTML/HTML笔记.md)
+- [HTML+CSS笔记](LearnHTML/HTML+CSS笔记.md)
 
 ## CSS
 
 - W3CSchool: [汤小洋的CSS视频课程](https://www.w3cschool.cn/minicourse/play/css_txy)
-- [CSS笔记](LearnCSS/CSS笔记.md)
 
 ## JavaScript
 
