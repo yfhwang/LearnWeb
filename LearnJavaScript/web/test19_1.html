@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            margin:10px auto;
+        }
+        #name{
+            outline: none;
+            border:0;
+            border-bottom:1px solid black;
+            font-size: 15px;
+            color: gray;
+        }
+    </style>
+    <script>
+        function query1(){
+            var objs = document.getElementById('hello');
+            console.log(objs.innerText);
+        }
+
+        function query3() {
+            var objs1 = document.getElementsByName('hobby');
+            var hash = ['吃饭','睡觉','打豆豆'];
+            for(var index=0;index<3;index++){
+                if(objs1[index].checked){
+                    console.log(hash[index]);
+                }
+            }
+        }
+        function query4() {
+            var objs4=document.getElementById('name');
+            console.log(objs4.value);
+        }
+    </script>
+    
+</head>
+<body>
+    <input type="button" value="获取hello" onclick="query1()">
+    <input type="button" value="获取welcome">
+    <input type="button" value="获取爱好" onclick="query3()">
+    <input type="button" value="获取姓名" onclick="query4()">
+    <div id="hello">hello world</div>
+    <div>
+        爱好：
+        <label for="eat">吃饭</label>
+        <input type="checkbox" name="hobby" id="eat" checked>
+        <label for="sleep">睡觉</label>
+        <input type="checkbox" name="hobby" id="sleep">
+        <label for="doudou">打豆豆</label>
+        <input type="checkbox" name="hobby" id="doudou">
+        <br>
+        <label for="name">姓名：</label>
+        <input type="text" name="name" id="name">
+    </div>
+
+</body>
+</html>
