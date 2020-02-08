@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery/jquery-1.7.js"></script>
+	<script type="text/javascript" src="jqueryui/jquery-ui.js"></script>
+	<link rel="stylesheet" href="jqueryui/jquery-ui.css">
+	<script type="text/javascript">
+		var n=0;
+		$(function(){
+			// $("#apple").draggable({
+			// 	// containment:"parent", //指定拖拽的范围，只能在父容器中拖拽
+			// 	containment:"#div2", //只能在ID为div2的容器中拖拽
+			// });
+
+			//五子棋
+			$("img").draggable({
+				containment:"#div1",
+				helper:"clone", //设置拖拽时的辅助元素，取舍：original、clone
+				stop:function(event,ui){
+					//ui中包含helper、position、originalPosition、offset
+					/*for(var index in ui){ 
+						console.log(index+"="+ui[index]);
+					}*/
+					ui["helper"].clone().appendTo($("#div1"));
+					n++;
+					if(n%2==0){
+						$("#black").draggable("enable");
+						$("#white").draggable("disable");
+					}else{
+						$("#black").draggable("disable");
+						$("#white").draggable("enable");
+					}
+				},
+			});
+			$("#white").draggable("disable");
+		});
+	</script>	
+	<style type="text/css">
+		#div1,#div2{
+			width: 535px;
+			height: 536px;
+			border: 1px solid #ccc;
+			background: url(images/board.jpg) no-repeat;
+		}
+	</style>
+</head>
+<body>
+	<!-- <div id="div1">
+		<img src="images/apple.gif" id="apple">
+	</div>
+	<br>
+	<div id="div2"></div> -->
+	
+	<img src="images/black.gif" id="black">
+	<img src="images/white.gif" id="white">
+	<div id="div1">
+		
+	</div>
+
+</body>
+</html>

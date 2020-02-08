@@ -41,22 +41,23 @@
 
 ### &lt;常用标签>
 
-| <常用标签> | 含义             | 常用属性                  |
-| :--------- | ---------------- | ------------------------- |
-| div        | 分区标签，无样式 |                           |
-| p          | 段落标签，有样式 |                           |
-| span       | 范围标签，无样式 |                           |
-| br         | 换行             |                           |
-| hr         | 水平线           | color、size、width、align |
-| h1-h6      | 标题             |                           |
-| img        | 图片             | src、alt、title           |
-| ol/ul、li  | 有序/无序列表    | type                      |
-| i、em      | italic、斜体     |                           |
-| b、strong  | bold、强调加粗   |                           |
-| del        | 删除线           |                           |
-| ins        | 下划线           |                           |
-| a          | 超链接           | herf、target、name        |
-| iframe     | 内嵌框架         |                           |
+| <常用标签>     | 含义             | 常用属性                  |
+| :------------- | ---------------- | ------------------------- |
+| div            | 分区标签，无样式 |                           |
+| p              | 段落标签，有样式 |                           |
+| span           | 范围标签，无样式 |                           |
+| br             | 换行             |                           |
+| hr             | 水平线           | color、size、width、align |
+| h1-h6          | 标题             |                           |
+| img            | 图片             | src、alt、title           |
+| ol/ul、li      | 有序/无序列表    | type                      |
+| select、option | 下拉菜单         |                           |
+| i、em          | italic、斜体     |                           |
+| b、strong      | bold、强调加粗   |                           |
+| del            | 删除线           |                           |
+| ins            | 下划线           |                           |
+| a              | 超链接           | herf、target、name        |
+| iframe         | 内嵌框架         |                           |
 
 
 
@@ -88,6 +89,7 @@
 | a       | href = "http://baidu.com、../d.html" | 链接地址、路径                 |
 | a、form | **target = "_self、blank"**          | 链接打开位置为自身、新标签页   |
 | a       | name = "锚点名称"                    | href="#锚点名称"进行锚链       |
+| option  | value = " "                          |                                |
 
 
 
@@ -159,6 +161,7 @@
 | th       | 表头单元格 |
 | td       | 单元格     |
 
+快速创建表格`table>(tr>td{hello$}*4)*4`
 
 ### 表格属性
 
@@ -336,7 +339,7 @@
 | option   | 列表选项           | value = "Nanjing" selected     |
 | textarea | 多行文本框         | readonly                       |
 | label    | 为表单元素提供标签 | for = "对应input的id值"        |
-| button   | 按钮，与input蕾西  | type = "submit、reset、button" |
+| button   | 按钮，与input类似  | type = "submit、reset、button" |
 | fieldset | 对表单元素进行分组 |                                |
 | legend   | 对分组添加标题     |                                |
 

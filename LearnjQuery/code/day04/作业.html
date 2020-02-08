@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		//1.去除一组整型数组中的重复的值
+		var nums=[23,4,2,21,34,34,5,4,23,34];
+		//方法1
+		/*function fn(nums){
+			var nums2=[];
+			for(i=0;i<nums.length;i++){
+				//查找新数组中是否已有元素
+				if(nums2.indexOf(nums[i])==-1){ //如果找不到返回-1
+					nums2.push(nums[i]); //如果没有则添加到新数组中
+				}
+			}
+			return nums2;
+		}
+		console.log(fn(nums));*/
+		//方法2
+		/*function fn(nums){
+			var nums2=[];
+			var obj=new Object();
+			for(var i=0;i<nums.length;i++){
+				if(!obj[nums[i]]){
+					obj[nums[i]]=true;
+					nums2.push(nums[i]);
+				}
+			}
+			console.log(obj);
+			return nums2;
+		}
+		console.log(fn(nums));*/
+
+
+		//2.统计一个字符串中出现次数最多的字母	
+		var strs="sadjfejsadjfdfjlspowkemker";
+		//方法1
+		/*var m=0;
+		for(var i=0;i<strs.length;i++){
+			var n=0;
+			for(var j=0;j<strs.length;j++){
+				if(strs[i]==strs[j]){					
+					n++;
+					if(n>m){
+						m=n;
+						var str=strs[i];
+					}else if(n=m&&str.indoxOf(strs[j])==-1){
+	                    str=strs+str[i]
+					}
+				}
+			}						
+		}
+		console.log("出现次数最多的是"+str+"一共出现了"+m+"次")	*/
+		//方法2
+		/*var str="sadjfdejsadjfdfjlspowkemker";
+		var obj={};
+		//遍历字符串，以字符作为key，出现次数作为value，存储到obj中
+		for(var i=0; i<str.length; i++){
+			if(!obj[str[i]]){ //如果没有，则将str[i]作为key，value设置为1
+				obj[str[i]] = 1;
+			}else{ //如果已有，则value加1
+				obj[str[i]]++;
+			}
+		}
+		console.log(obj);	
+
+		var char=''; 
+		var max=0; //存储最大值
+		for(var key in obj){    //遍历obj，比较大小 将最大的值存放在max中 输出
+			if(obj[key]>max){
+				max = obj[key];
+				char = key;
+			}
+		}
+		document.write("最多出现的为："+char+'，共出现：'+max+"次")*/		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 简化外部文件的引用 -->
+	<script src="js/include.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#div1").datepicker({
+				changeYear:true,
+				changeMonth:true,
+				yearRange:"1900:2030",
+			});
+
+			var date=new Date(1998,7,8);
+			$("#txtDate").datepicker({
+				changeYear:true,
+				changeMonth:true,
+				yearRange:"1900:2030",
+				dateFormat:"yy年mm月dd日 DD",
+				// dateFormat:"yy年mm月dd日 D",
+				dayNames:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"], //设置星期几的长名称
+				dayNamesShort:["日","一","二","三","四","五","六"], //设置星期几的短名称
+				dayNamesMin:["日","一","二","三","四","五","六"], //设置列首
+				// minDate:-10,
+				minDate:date,
+				maxDate:"+5y",
+				// showOn:"button",
+				showOn:"both",
+				buttonText:"选择日期",
+				showAnim:"fadeIn",
+				duration:1000,
+				numberOfMonths:2,
+				// numberOfMonths:[2,3],
+				firstDay:0,
+				showWeek:false,
+				// isRTL:true,
+				showButtonPanel:true,
+				showOtherMonths:true,
+			});
+		});
+
+		function openDatepicker(){
+			// $("#txtDate").datepicker("show");
+			$("#txtDate").datepicker("dialog");
+		}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+	<hr>
+
+	日期：<input type="text" id="txtDate" size="30px">
+	<br>
+	<input type="button" value="打开日期面板" onclick="openDatepicker()">
+</body>
+</html>

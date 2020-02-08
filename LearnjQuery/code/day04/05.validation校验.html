@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery/jquery-1.9.0.js"></script>
+	<script type="text/javascript" src="validation/jquery.validate.js"></script>
+	<script type="text/javascript" src="validation/additional-methods.js"></script>
+	<script type="text/javascript" src="validation/messages_zh.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#frm").validate({
+				//方式2
+				rules:{
+					name:{
+						required:true,
+						minlength:5
+					},
+					pwd:{
+						required:true,
+						rangelength:[6,10]
+					},
+					repwd:{
+						equalTo:"#pwd"
+					},
+					age:{
+						range:[14,50]
+					},
+					email:{
+						required:true,
+						// email:true,
+						myemail:true,
+					},
+					header:{
+						extension:"jpg|bmp|png|gif" //需要使用附加验证文件：additional-methods.js
+					},
+					phone:{
+						regexp:/^1\d{10}$/
+					}
+				},
+				messages:{
+					name:{
+						required:"不能为空",
+						minlength:"最少{0}位"
+					},
+					pwd:{
+						required:"不能为空",
+						rangelength:"长度范围在{0}-{1}之间"
+					},
+					repwd:{
+						equalTo:"两次输入的密码不一致"
+					},
+					age:{
+						range:"年龄范围在{0}-{1}之间"
+					},
+					phone:{
+						regexp:"手机号不正确"
+					}
+				},
+				submitHandler:function(){
+					console.log("校验成功，默认提交操作会被阻止，可以通过其他方式提交请求，如DOM对象的submit()或使用AJAX进行提交！");
+					$('#frm')[0].submit();
+					// $('#frm').submit(); //不能使用jQuery对象的submit()，会出现死循环
+				},
+				invalidHandler:function(){
+					console.log("校验失败！");
+				}
+			});
+		});
+
+		/*
+			扩展validation校验框架，增加校验规则
+			$.validator.addMethod(name,callback,message)
+				参数name表示校验规则名称
+				参数backback表示回调函数，进行校验
+				参数message表示校验失败时的消息
+			callback(value,element,params)
+				参数value表示被校验的数据
+				参数element表示被校验的表单元素
+				参数params表示校验规则，在使用校验规则时传入，可以是布尔值、数值、数组、正则表达式等
+				注：回调函数执行后必须返回一个boolean值，true表示校验通过，false表示校验失败
+		*/
+		$.validator.addMethod("myemail",function(value,element,params){
+			var reg=/^\w+@\w+(\.[a-z]{2,3}){1,2}$/;
+			if(params){
+				return reg.test(value);
+			}else{
+				return true;
+			}
+		},"邮箱格式不正确");
+
+		$.validator.addMethod("regexp",function(value,element,params){
+			return params.test(value);
+		},"不符合正则表达式");
+	</script>
+</head>
+<body>
+	<form action="success.html" id="frm">
+		<!-- 方式1：不建议 -->
+		<!-- <p><label for="name">姓名：</label><input type="text" name="name" id="name" class="required"></p>
+		<p><label for="pwd">密码：</label><input type="text" name="pwd" id="pwd" minlength="6" maxlength="10"></p> -->
+		<p><label for="username">姓名：</label><input type="text" name="name" id="username"></p>
+		<p><label for="pwd">密码：</label><input type="text" name="pwd" id="pwd"></p>
+		<p><label for="repwd">确认密码：</label><input type="text" name="repwd" id="repwd"></p>
+		<p><label for="age">年龄：</label><input type="text" name="age" id="age"></p>
+		<p><label for="email">邮箱：</label><input type="text" name="email" id="email"></p>
+		<p><label for="header">头像：</label><input type="file" name="header" id="header"></p>
+		<p><label for="phone">手机号：</label><input type="text" name="phone" id="phone"></p>
+		<p><input type="submit" value="提交"></p>
+
+	</form>
+</body>
+</html>

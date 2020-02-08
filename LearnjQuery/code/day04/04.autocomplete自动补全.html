@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery/jquery-1.9.0.js"></script>
+	<script type="text/javascript" src="jqueryui/jquery-ui.js"></script>
+	<link rel="stylesheet" href="jqueryui/jquery-ui.css">	
+	<script type="text/javascript">
+		var keywords=["tom","jack","alice","apple","apache","bull","bewell","mike","body","abc"]; 
+		var emails=["qq.com","126.com","163.com","139.com","sina.com","souhu.com","itany.com"];
+
+		$(function(){
+			$("#txt").autocomplete({
+				source:keywords,
+				minLength:1,
+				autoFocus:true,
+				delay:1000,
+			});
+
+			// 效果演示：网易首页的登陆http://www.163.com
+			$("#txtEmail").autocomplete({
+				source:function(req,res){ //request请求、response响应
+					/*for(var index in req){
+						console.log(index+"="+req[index]);
+					}*/
+					var str=req.term; //获取用户输入的内容
+
+					var array=[]; //用来存储提示的内容
+					for(var i=0;i<emails.length;i++){
+						//获取@符号的位置
+						var index=str.indexOf("@"); 
+						if(index!=-1){
+							var suffix=str.substring(index+1); //获取@符号后面的内容，即后缀
+							if(emails[i].indexOf(suffix)==0){ //找到匹配的邮箱
+								array.push(str.substring(0,index)+"@"+emails[i]); //将用户输入的邮箱前缀和匹配的邮箱后缀拼接在一起
+							}
+						}else{
+							array.push(str+"@"+emails[i]);
+						}
+					}
+					// console.log(res.constructor.name);					
+					res(array);//调用res()函数，将提示内容作为参数传入，返回提示内容
+				},
+			});
+		});
+	</script>	
+</head>
+<body>
+	关键字：<input type="text" name="keywork" id="txt">
+	<hr>
+
+	邮箱：<input type="text" name="email" id="txtEmail">
+</body>
+</html>

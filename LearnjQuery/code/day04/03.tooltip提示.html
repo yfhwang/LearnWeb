@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery/jquery-1.9.0.js"></script>
+	<script type="text/javascript" src="jqueryui/jquery-ui.js"></script>
+	<link rel="stylesheet" href="jqueryui/jquery-ui.css">	
+	<script type="text/javascript">
+		$(function(){
+			$("#apple").tooltip({
+				content:"小呀小苹果",
+				position:{
+					at:"right bottom",
+					my:"left top",
+				}
+			});
+
+			$("#btnOK").tooltip();
+		});
+	</script>	
+	<style type="text/css">
+		#apple{
+			position: absolute;
+			left: 300px;
+			top: 300px;
+		}
+	</style>
+</head>
+<body>
+	<img src="images/apple.gif" title="你是我的小苹果" id="apple">
+	<br>
+
+	<button id="btnOK" title="OK">确    定</button>
+</body>
+</html>

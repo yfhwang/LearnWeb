@@ -382,10 +382,11 @@ test21查询实例
 | 方法或属性 | 含义 |
 | ---------- | ---- |
 |**document.getElementById("id值")** |根据**id属性**来查询节点，返回匹配的第一个节点 |
-|**document.getElementsByName("name属性值")** |根据**name属性**来查询，返回所有匹配的节点集合 |
+|document.getElementsByName("name属性值") |根据**name属性**来查询，返回所有匹配的节点集合 |
 |**document.getElementsByTagName("标签名")** |根据**标签名**来查询，返回所有匹配的节点集合 |
+|**document.getElementsByClassName("类名")** |根据**类名**来查询，返回所有匹配的节点集合 |
 |document.querySelector("选择器") |根据css选择器来查询，返回匹配的第一个节点 |
-|document.querySelectorAll("选择器") |根据css选择器来查询，返回所有匹配的节点集合 |
+|document.querySelectorAll("选择器") |根据css选择器来查询，返回所有匹配的节点集合，如根据class名: '.delete' |
 |**parentNode属性** |查询当前节点的**父节点**|
 |previousSibling属性 |查询当前节点的上一个节点|
 |nextSibling属性 |查询当前节点的下一个节点|
@@ -483,9 +484,7 @@ test21查询实例
 </body>
 ```
 
-### 使用DOM操作表格
-
-test24
+- 使用DOM操作表格：test24
 
 ### 常用事件
 
@@ -518,6 +517,51 @@ test24
 | onchange | 域的内容发生改变，一般用于文件选择器和下拉列表               |
 | onselect | 文本内容被选中                                               |
 | onsubmit | **表单提交前触发**，回调函数返回true表示允许表单提交，返回false表示阻止表单提交 |
+
+### 事件操作
+
+- 事件冒泡
+
+特点：先触发子级元素的事件，再触发父级元素的事件 
+
+阻止事件冒泡 ：` event.stopPropagation()` --w3c标准方式
+或 `event.cancelBubble=true;`
+
+- 事件默认行为
+
+阻止事件的默认行为：`event.preventDefault();`
+
+### 下拉列表
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

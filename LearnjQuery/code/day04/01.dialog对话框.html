@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery/jquery-1.9.0.js"></script>
+	<script type="text/javascript" src="jqueryui/jquery-ui.js"></script>
+	<link rel="stylesheet" href="jqueryui/jquery-ui.css">	
+	<script type="text/javascript">
+		$(function(){
+			$("#mydiv").dialog({
+				title:"提示",
+				buttons:{
+					"确定":function(){
+						console.log("点击了确定！");
+						$("#mydiv").dialog("close");
+					},
+					"取消":function(){
+						console.log("点击了取消！");
+						$("#mydiv").dialog("close");
+					}
+				},
+				position:{
+					my:"left top", //参照物出现在当前对话框的左上位置，不能颠倒顺序(不能写成top left)
+					at:"right bottom", //当前对话框出现在参照物的右下位置
+					of:"#btn", //以id为btn的元素作为参照物，进行定位
+				},
+				width:"400px",
+				show:true,
+				hide:"clip",
+				autoOpen:false,
+				draggable:false,
+				resizable:false,
+				// modal:true, //模态窗口
+				// closeText:"关闭",
+
+				create:function(){
+					console.log("---create dialog");
+				},
+				open:function(){
+					console.log("---open dialog");
+				},
+				close:function(){
+					console.log("---close dialog");
+				}
+			});
+		});
+
+		function doOpen(){
+			$("#mydiv").dialog("open");
+		}
+	</script>	
+	<style type="text/css">
+		#btn{
+			position: absolute;
+			top: 300px;
+			left: 300px;
+		}
+	</style>
+</head>
+<body>
+	<div id="mydiv">
+		This is dialog!
+	</div>
+
+	<input type="button" value="弹出dialog" onclick="doOpen()" id="btn">
+
+</body>
+</html>

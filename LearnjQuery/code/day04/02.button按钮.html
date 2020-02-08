@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery/jquery-1.9.0.js"></script>
+	<script type="text/javascript" src="jqueryui/jquery-ui.js"></script>
+	<link rel="stylesheet" href="jqueryui/jquery-ui.css">	
+	<script type="text/javascript">
+		$(function(){
+			//按钮button()
+			$("#btn1").button({
+				// disabled:true,
+				icons:{ //input按钮无法显示图标，只有button按钮才能显示图标
+					primary:"ui-icon-mail-open",
+				},
+			});
+
+			$("#btn2").button({
+				icons:{ 
+					primary:"ui-icon-mail-open",
+					// secondary:"ui-icon-gear"
+				},
+				label:"wbs16073",
+				text:false,
+			});
+
+			//按钮组buttonset()
+			$("#frm").buttonset();
+
+		});
+
+		
+	</script>	
+</head>
+<body>
+	<input type="button" value="input按钮" id="btn1">
+	<button id="btn2">button按钮</button>
+	<hr>
+
+	<form id="frm">
+		<input type="radio" name="sex" id="male"><label for="male">男</label>
+		<input type="radio" name="sex" id="female"><label for="female">女</label>
+		<br>
+		<br>
+		<input type="checkbox" name="hobby" id="eat"><label for="eat">吃饭</label>
+		<input type="checkbox" name="hobby" id="sleep"><label for="sleep">睡觉</label>
+		<input type="checkbox" name="hobby" id="doudou"><label for="doudou">打豆豆</label>
+	</form>
+</body>
+</html>

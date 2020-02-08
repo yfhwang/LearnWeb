@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript中数组的操作</title>
+    <script>
+    /*
+    	JavaScript数组练习
+    */
+    //1.找出元素item在给定数组array中的位置，如果出现则返回位置，否则返回-1
+    function indexOf(array, item) {
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] == item) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    var array = [2, 6, 12, 25, 24];
+    console.log(indexOf(array, 12));
+
+    //2.计算给定数组array中所有元素的总和，返回总和
+    function sum(array) {
+        var sum = 0;
+        for (var i in array) {
+            sum += array[i];
+        }
+        return sum;
+    }
+    var array = [2, 4, 12];
+    console.log("这个数组的总和为:" + sum(array));
+
+    //3.移除数组array中所有值与item相等的元素，不允许修改原数组array，返回一个新数组
+    function remove1(array, item) {
+        var arrNew = [];
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] != item) {
+                arrNew.push(array[i]);
+            }
+        }
+        return arrNew;
+    }
+    var arr = [2, 12, 25, 2, 10];
+    console.log(remove1(arr, 2));
+
+    //4.移除数组array中所有值与item相等的元素，直接修改原数组array，并返回该数组
+    function remove2(array, item) {
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] == item) {
+                array.splice(i, 1);
+            }
+        }
+        return array;
+    }
+    var arr = [2, 12, 25, 2, 10];
+    console.log(remove2(arr, 2));
+
+    //5.在数组array末尾添加元素item，不允许修改原数组array，返回一个新数组
+    function append(array, item) {
+        var arrNew = array.slice(0);
+        arrNew.push(item);
+        return arrNew;
+    }
+    var array = [2, 12, 6, 20, 3];
+    console.log(append(array, 10));
+
+    //6.在数组array开头添加元素item，不允许修改原数组array，返回一个新数组
+    function prepend(array, item) {
+        // var arr = [item];
+        // var arrNew=arr.concat(array)
+        var arrNew = array.slice(0);
+        arrNew.unshift(item);
+        return arrNew;
+    }
+    var array = [2, 12, 6, 20];
+    console.log(prepend(array, 10));
+
+    //7.删除数组array的最后一个元素，不允许修改原数组array，返回一个新数组
+    function truncate1(array) {
+        return array.slice(0, -1); //支持负数
+    }
+    var array = [2, 12, 6, 20];
+    console.log(truncate1(array));
+
+    //8.删除数组array的第一个元素，不允许修改原数组array，返回一个新数组
+    function truncate2(array) {
+        return array.slice(1);
+    }
+    var array = [2, 12, 6, 20];
+    console.log(truncate2(array));
+
+    //9.合并数组array1和数组array2，不允许修改原数组，返回一个新数组
+    function concat(array1, array2) {
+        return array1.concat(array2);
+    }
+    var array1 = [1, 2, 3];
+    var array2 = [4, 5, 6];
+    console.log(concat(array1, array2));
+
+    //10.在数组array的index处添加元素item，不允许修改原数组array，返回一个新数组
+    function insert(array, item, index) {
+        var arrNew = array.slice(0);
+        arrNew.splice(index, 0, item);
+        return arrNew;
+    }
+    var array = [2, 4, 6];
+    console.log(insert(array, 3, 1));
+
+    //11.统计数组array中值等于item的元素出现的次数，返回次数
+    function count(array, item) {
+        var count = 0;
+        for (var i in array) {
+            if (array[i] == item) {
+                count++;
+            }
+        }
+        return count;
+    }
+    var array = [2, 8, 12, 2, 15, 2];
+    console.log(count(array, 2));
+
+    //12.找出数组array中重复出现过的元素，返回一个包含重复出现元素的新数组（多次出现时只存放一次）
+    function repeat(array) {
+        var arrNew = [];
+        for (var i = 0; i < array.length; i++) {
+            for (var j = i + 1; j < array.length; j++) {
+                if (array[i] == array[j] && arrNew.indexOf(array[i]) == -1) {
+                    arrNew.push(array[i]);
+                }
+            }
+        }
+        return arrNew;
+    }
+    var array = [2, 4, 2, 12, 6, 2, 4];
+    console.log(repeat(array));
+
+    //13.为数组array中的每个元素求二次方，不允许修改原数组array，返回一个新数组
+    function square(array) {
+        /*var arrNew = [];
+        for (var i = 0; i < array.length; i++) {
+            arrNew.push(Math.pow(array[i], 2));
+        }*/
+        //map()方法将调用的数组中的每个元素传递给指定的函数，并返回一个新数组，它包含该函数的返回值
+        var arrNew = array.map(function(element) { //element表示数组中的元素
+            return Math.pow(element, 2);
+        });
+        return arrNew;
+    }
+    var array = [1, 2, 3, 4, 5];
+    console.log(square(array));
+
+    //14.在数组array中，查找值与item相等的元素出现的所有位置，返回一个包含出现位置的新数组
+    function findItem(array, item) {
+        /*var arrNew = [];
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] == item) {
+                arrNew.push(i);
+            }
+        }*/
+        var arrNew = [];
+        array.map(function(element, index) { //element表示数组中的元素，index表示索引
+            if (element == item) {
+                arrNew.push(index);
+            }
+        });
+        return arrNew;
+    }
+    var array = [1, 2, 4, 2, 10, 12, 2];
+    console.log(findItem(array, 2));
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
